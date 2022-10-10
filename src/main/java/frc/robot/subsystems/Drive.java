@@ -21,7 +21,7 @@ public class Drive extends SubsystemBase {
   }
 
   public void arcadeDrive(double forward, double rotate){
-    drive.arcadeDrive(forward, rotate,true);
+    drive.arcadeDrive(forward, rotate);
   }
 
   public void tankDrive(double left, double right){

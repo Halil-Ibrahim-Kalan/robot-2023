@@ -15,10 +15,11 @@ public class Imu extends SubsystemBase {
   // https://wiki.analog.com/first/adis16448_imu_frc/java
   ADIS16448_IMU imu = new ADIS16448_IMU();
   ShuffleboardTab tab = Shuffleboard.getTab("IMU");
+  
   public Imu() {
   }
 
-  // #region IMU all values
+  // #region IMU Tüm Değerler
   public double getAngle() {
     return imu.getAngle();
   }
@@ -91,22 +92,22 @@ public class Imu extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    Shuffleboard.getTab("IMU").add("Angle", getAngle());
-    Shuffleboard.getTab("IMU").add("Rate", getRate());
-    Shuffleboard.getTab("IMU").add("X_Accel", getAccelX());
-    Shuffleboard.getTab("IMU").add("Y_Accel", getAccelY());
-    Shuffleboard.getTab("IMU").add("Z_Accel", getAccelZ());
-    Shuffleboard.getTab("IMU").add("Barometric_Pressure", getBarometricPressure());
-    Shuffleboard.getTab("IMU").add("X_Gyro_Angle", getGyroAngleX());
-    Shuffleboard.getTab("IMU").add("Y_Gyro_Angle", getGyroAngleY());
-    Shuffleboard.getTab("IMU").add("Z_Gyro_Angle", getGyroAngleZ());
-    Shuffleboard.getTab("IMU").add("X_Magnetic_Field", getMagneticFieldX());
-    Shuffleboard.getTab("IMU").add("Y_Magnetic_Field", getMagneticFieldY());
-    Shuffleboard.getTab("IMU").add("Z_Magnetic_Field", getMagneticFieldZ());
-    Shuffleboard.getTab("IMU").add("Tempature", getTemperature());
-    Shuffleboard.getTab("IMU").add("X_Complemantary_Angle", getXComplementaryAngle());
-    Shuffleboard.getTab("IMU").add("Y_Complemantary_Angle", getYComplementaryAngle());
-    Shuffleboard.getTab("IMU").add("X_Filtered_Accel_Angle", getXFilteredAccelAngle());
-    Shuffleboard.getTab("IMU").add("Y_Filtered_Accel_Angle", getYFilteredAccelAngle());
+    tab.add("Angle", getAngle());
+    tab.add("Rate", getRate());
+    tab.add("X_Accel", getAccelX());
+    tab.add("Y_Accel", getAccelY());
+    tab.add("Z_Accel", getAccelZ());
+    tab.add("Barometric_Pressure", getBarometricPressure());
+    tab.add("X_Gyro_Angle", getGyroAngleX());
+    tab.add("Y_Gyro_Angle", getGyroAngleY());
+    tab.add("Z_Gyro_Angle", getGyroAngleZ());
+    tab.add("X_Magnetic_Field", getMagneticFieldX());
+    tab.add("Y_Magnetic_Field", getMagneticFieldY());
+    tab.add("Z_Magnetic_Field", getMagneticFieldZ());
+    tab.add("Tempature", getTemperature());
+    tab.add("X_Complemantary_Angle", getXComplementaryAngle());
+    tab.add("Y_Complemantary_Angle", getYComplementaryAngle());
+    tab.add("X_Filtered_Accel_Angle", getXFilteredAccelAngle());
+    tab.add("Y_Filtered_Accel_Angle", getYFilteredAccelAngle());
   }
 }
