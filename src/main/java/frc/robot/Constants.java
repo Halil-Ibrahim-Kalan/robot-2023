@@ -21,4 +21,7 @@ public final class Constants {
         public static final int channelA = 9;
         public static final int channelB = 8;
     }
+    public static final class Joystick {
+        public static final int port = 0;
+    }
 }

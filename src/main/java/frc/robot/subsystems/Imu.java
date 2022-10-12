@@ -5,8 +5,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.ADIS16448_IMU;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Imu extends SubsystemBase {
@@ -14,7 +13,6 @@ public class Imu extends SubsystemBase {
 
   // https://wiki.analog.com/first/adis16448_imu_frc/java
   ADIS16448_IMU imu = new ADIS16448_IMU();
-  ShuffleboardTab tab = Shuffleboard.getTab("IMU");
   
   public Imu() {
   }
@@ -92,22 +90,23 @@ public class Imu extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    tab.add("Angle", getAngle());
-    tab.add("Rate", getRate());
-    tab.add("X_Accel", getAccelX());
-    tab.add("Y_Accel", getAccelY());
-    tab.add("Z_Accel", getAccelZ());
-    tab.add("Barometric_Pressure", getBarometricPressure());
-    tab.add("X_Gyro_Angle", getGyroAngleX());
-    tab.add("Y_Gyro_Angle", getGyroAngleY());
-    tab.add("Z_Gyro_Angle", getGyroAngleZ());
-    tab.add("X_Magnetic_Field", getMagneticFieldX());
-    tab.add("Y_Magnetic_Field", getMagneticFieldY());
-    tab.add("Z_Magnetic_Field", getMagneticFieldZ());
-    tab.add("Tempature", getTemperature());
-    tab.add("X_Complemantary_Angle", getXComplementaryAngle());
-    tab.add("Y_Complemantary_Angle", getYComplementaryAngle());
-    tab.add("X_Filtered_Accel_Angle", getXFilteredAccelAngle());
-    tab.add("Y_Filtered_Accel_Angle", getYFilteredAccelAngle());
+    SmartDashboard.putNumber("ImuAngle", getAngle());
+    SmartDashboard.putNumber("ImuRate", getRate());
+    SmartDashboard.putNumber("Imu_X_Accel", getAccelX());
+    SmartDashboard.putNumber("Imu_Y_Accel", getAccelY());
+    SmartDashboard.putNumber("Imu_Z_Accel", getAccelZ());
+    SmartDashboard.putNumber("Imu_Pressure", getBarometricPressure());
+    SmartDashboard.putNumber("Gyro_X_Angle", getGyroAngleX());
+    SmartDashboard.putNumber("Gyro_Y_Angle", getGyroAngleY());
+    SmartDashboard.putNumber("Gyro_Z_Angle", getGyroAngleZ());
+    SmartDashboard.putNumber("Magnetic_Field_X", getMagneticFieldX());
+    SmartDashboard.putNumber("Magnetic_Field_Y", getMagneticFieldY());
+    SmartDashboard.putNumber("Magnetic_Field_Z", getMagneticFieldZ());
+    SmartDashboard.putNumber("Tempature", getTemperature());
+    SmartDashboard.putNumber("X_Complementary_Angle", getXComplementaryAngle());
+    SmartDashboard.putNumber("Y_Complementary_Angle", getYComplementaryAngle());
+    SmartDashboard.putNumber("X_Complementary_Angle", getXComplementaryAngle());
+    SmartDashboard.putNumber("X_Filtered_Accel_Angle", getXFilteredAccelAngle());
+    SmartDashboard.putNumber("Y_Filtered_Accel_Angle", getYFilteredAccelAngle());
   }
 }

@@ -5,14 +5,12 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Encoders extends SubsystemBase {
   Encoder encoder = new Encoder(Constants.Encoder.channelA, Constants.Encoder.channelB);
-  ShuffleboardTab tab = Shuffleboard.getTab("ENCODER");
 
   /** Creates a new Encoder. */
   public Encoders() {
@@ -35,8 +33,8 @@ public class Encoders extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
-    tab.add("Distance", getDistance());
-    tab.add("Rate", getRate());
+    // This method will be called once per scheduler run    
+    SmartDashboard.putNumber("Encoder_Distance", getDistance());
+    SmartDashboard.putNumber("Encoder_Rate", getRate());
   }
 }
