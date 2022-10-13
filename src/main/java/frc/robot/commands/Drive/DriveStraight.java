@@ -9,16 +9,19 @@ import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Encoders;
 import frc.robot.subsystems.Imu;
 
-public class GoStraight extends CommandBase {
+public class DriveStraight extends CommandBase {
   /** Creates a new GoStraight. */
   double kP = 0.005; // propotional turning constant
+  double kPForward = 0.5;
   double kAngleSetpoint = 0.0;
+  double encoderSetpoint = 0;
+  double encoderDistance = 0;
   Imu imu;
   Drive drive;
   Encoders encoders;
   boolean isFinished = false;
 
-  public GoStraight(Imu imu, Drive drive, Encoders encoders) {
+  public DriveStraight(Imu imu, Drive drive, Encoders encoders) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.imu = imu;
     this.drive = drive;
@@ -37,13 +40,23 @@ public class GoStraight extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double average = (encoders.getDistance1() + encoders.getDistance2()) / 2;  
-    double turningValue = (kAngleSetpoint - imu.getAngle()) * kP;
-    
-    if ( average <= 10) {
-      drive.arcadeDrive(0.5, turningValue);
-    } else {
+    double turningValue = -imu.getAngle() * kP; // dönme açısı
+
+    if (encoders.getDistance1() - encoderDistance <= 10) {
+      if(turningValue <=  0.05 && turningValue >= -0.05) {
+        encoderSetpoint = encoders.getDistance1(); // encoder değerimizi çekiyoruz
+        drive.arcadeDrive(0.5, 0); // dümdüz gittik
+        // abi dumduz yardiriyo bir sey degismeyince
+      }
+      else {
+        encoderDistance = encoders.getDistance1() - encoderSetpoint;
+        drive.arcadeDrive(0, turningValue);
+        // agaaa vurulduk duzelt ife gir tekrar
+      }
+    }
+    else {
       isFinished = true;
+      //mitti beyler mitti
     }
   }
 
