@@ -22,7 +22,6 @@ public class JoystickDrive extends CommandBase {
     this.rotate = rotate;
     addRequirements(this.drive);
   }
-
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}

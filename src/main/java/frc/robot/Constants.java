@@ -17,9 +17,15 @@ public final class Constants {
         public static final int left = 0;
         public static final int right = 1;
     }
-    public static final class Encoder {
-        public static final int channelA = 9;
-        public static final int channelB = 8;
+    public static final class Encoders {
+        public static final class Encoder1 {
+            public static final int channelA = 9;
+            public static final int channelB = 8;
+        }
+        public static final class Encoder2 {
+            public static final int channelA = 9;
+            public static final int channelB = 8;
+        }
     }
     public static final class Joystick {
         public static final int port = 0;
